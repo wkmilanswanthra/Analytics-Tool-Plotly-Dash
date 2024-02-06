@@ -4,9 +4,14 @@ import pandas as pd
 import plotly.express as px
 import pymongo                                                  
 from bson.objectid import ObjectId
+from dotenv import load_dotenv
+import os
 
-client = pymongo.MongoClient(
-    "mongodb+srv://user:test@test-bed.dtgmi5a.mongodb.net/?retryWrites=true&w=majority")
+load_dotenv()
+
+MONGO_URI = os.getenv("MONGO_URI")
+
+client = pymongo.MongoClient(MONGO_URI)
 
 db = client["zoo-emo"]
 collection = db["users"]
